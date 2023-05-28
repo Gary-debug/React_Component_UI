@@ -1,0 +1,41 @@
+.alert {
+  position: relative;
+  display: inline-block;
+  width: 30%;
+  margin: 50px auto 0;
+  padding: $alert-padding-y $alert-padding-x;
+  margin-bottom: $alert-margin-bottom;
+  border: $alert-border-width solid transparent;
+  border-radius: $alert-border-radius;
+  .close {
+    position: relative;
+    top: 0;
+    right: 0;
+    padding: $alert-padding-y $alert-padding-x;
+    color:  inherit;
+    cursor: pointer;
+  }
+  .title {
+    font-weight: $font-weight-bold;
+  }
+  .description {
+    font-size: $alert-description-font-size;
+    margin: $alert-description-top-margin 0 0;
+  }
+}
+
+.alert-default {
+  @include alert-style($primary, darken($primary, 5%), $white)
+}
+
+.alert-success {
+  @include alert-style($success, darken($success, 5%), $white)
+}
+
+.alert-danger {
+  @include alert-style($danger, darken($danger, 5%), $white)
+}
+
+.alert-warning {
+  @include alert-style($warning, darken($warning, 5%), $white)
+}
