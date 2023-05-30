@@ -10,14 +10,14 @@ $gray-800: #343a40 !default;
 $gray-900: #212529 !default;
 $black:    #000 !default;
 
-$blue:    #096dd9 !default;
+$blue:    #69b1ff !default;
 $indigo:  #6610f2 !default;
 $purple:  #6f42c1 !default;
 $pink:    #eb2f96 !default;
-$red:     #f5222d !default;
+$red:     #ff7875 !default;
 $orange:  #fd7e14 !default;
-$yellow:  #fadb14 !default;
-$green:   #389e0d !default;
+$yellow:  #fff566 !default;
+$green:   #95de64 !default;
 $teal:    #20c997 !default;
 $cyan:    #13c2c2 !default;
 
@@ -297,3 +297,18 @@ $alert-title-font-weight:           $font-weight-bold !default;
 $alert-border-width:                $border-width !default;
 $alert-description-font-size:       $font-size-sm !default;
 $alert-description-top-margin:      .3rem !default;
+
+// Navs
+$nav-link-padding-y:                .5rem !default;
+$nav-link-padding-x:                1rem !default;
+$nav-link-disabled-color:           $gray-600 !default;
+
+$nav-tabs-border-color:             $gray-300 !default;
+$nav-tabs-border-width:             $border-width !default;
+$nav-tabs-border-radius:            $border-radius !default;
+$nav-tabs-link-hover-border-color:  $gray-200 $gray-200 $nav-tabs-border-color !default;
+$nav-tabs-link-hover-color:         $primary !default;
+$nav-tabs-link-active-color:        $primary !default;
+$nav-tabs-link-active-bg:           $body-bg !default;
+$nav-tabs-link-active-border-color: $gray-300 $gray-300 $nav-tabs-link-active-bg !default;
+$nav-tabs-content-margin:           1rem !default;

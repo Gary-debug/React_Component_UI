@@ -39,3 +39,8 @@
   background: $background;
   border-color: $border;
 }
+
+@mixin border-top-radius($raduis) {
+  border-top-left-radius: $raduis;
+  border-top-right-radius: $raduis;
+}
