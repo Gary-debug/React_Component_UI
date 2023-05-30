@@ -1,5 +1,5 @@
 import React from 'react';
-import Button, {ButtonType, ButtonSize} from './components/Button/button';
+import Button from './components/Button/button';
 import Alert, {BaseAlertProps} from './components/Alert/alert';
 import Menu from './components/Menu/menu';
 import MenuItem from './components/Menu/menuItem';
@@ -11,6 +11,12 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
+        {/* <Button>Hello</Button>
+        <Button disabled>Disabled Button</Button>
+        <Button btnType='primary' size='lager'>Large Primay</Button>
+        <Button btnType='danger' size='small'>Small Danger</Button>
+        <Button btnType='link' href='http://baidu.com'>Baidu Link</Button>
+        <Button btnType='link' href='http://baidu.com' disabled target="_blank">Disabled Link</Button> */}
         {/* <Menu defaultIndex='0' onSelect={(index) => {alert(index)}} mode='horizontal' defaultOpenSubMenus={['2']}>
           <MenuItem>
             cool link
