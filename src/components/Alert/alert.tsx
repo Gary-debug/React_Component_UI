@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import classNames from "classnames";
 import Transition from "../Transition/transition";
+import Icon from "../Icon/icon";
+import { faXmark } from "@fortawesome/free-solid-svg-icons";
 
 export interface BaseAlertProps {
   className ?: string;
@@ -37,9 +39,10 @@ const Alert: React.FC<BaseAlertProps> = (props: BaseAlertProps) => {
       animation="zoom-in-top"
     >
       <div className={classes}>
-        {closable && <div className="close" onClick={handleOnClick}>X</div>}
+        {/* {closable && <div className="close" onClick={handleOnClick}>X</div>} */}
         <div className="title">{title}</div>
         <div className="description">{description}</div>
+        <Icon className="alert-close-icon" onClick={handleOnClick} icon={faXmark} style={{ display: closable ? "block" : "none" }} />
       </div>
     </Transition>
 

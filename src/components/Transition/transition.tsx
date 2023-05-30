@@ -6,7 +6,7 @@ type AnimationName = 'zoom-in-top' | 'zoom-in-left' | 'zoom-in-bottom' | 'zoom-i
 
 type TransitionProps = CSSTransitionProps & {
   animation ?: AnimationName,
-  children ?: ReactNode
+  children ?: ReactNode,
 }
 
 const Transition: React.FC<TransitionProps> = (props) => {

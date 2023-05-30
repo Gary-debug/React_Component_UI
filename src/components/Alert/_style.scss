@@ -1,41 +1,61 @@
 .alert {
   position: relative;
-  display: inline-block;
-  width: 30%;
-  margin: 50px auto 0;
-  padding: $alert-padding-y $alert-padding-x;
-  margin-bottom: $alert-margin-bottom;
-  border: $alert-border-width solid transparent;
-  border-radius: $alert-border-radius;
-  .close {
-    position: relative;
-    top: 0;
-    right: 0;
-    padding: $alert-padding-y $alert-padding-x;
-    color:  inherit;
-    cursor: pointer;
-  }
-  .title {
-    font-weight: $font-weight-bold;
-  }
-  .description {
-    font-size: $alert-description-font-size;
-    margin: $alert-description-top-margin 0 0;
-  }
+  width: 380px;
+  padding: 15px;
+  box-sizing: border-box;
+  color: #000;
+  font-size: 1rem;
+  line-height: 1.5;
+  display: flex;
+  word-wrap: break-word;
+  border-radius: 0.25rem;
 }
 
 .alert-default {
-  @include alert-style($primary, darken($primary, 5%), $white)
+  background-color: $primary;
+  color: $white !important;
 }
 
 .alert-success {
-  @include alert-style($success, darken($success, 5%), $white)
+  background-color: $success;
+  color: $white !important;
 }
 
 .alert-danger {
-  @include alert-style($danger, darken($danger, 5%), $white)
+  background-color: $danger;
+  color: $white !important;
 }
 
 .alert-warning {
-  @include alert-style($warning, darken($warning, 5%), $white)
+  background-color: $warning;
+  color: $white !important;
+}
+
+.alert-close-icon {
+  margin-left: 18px;;
+  padding: 0;
+  overflow: hidden;
+  font-size: $font-size-base;
+  line-height: $line-height-base;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.alert-content {
+  flex: 1;
+  min-width: 0;
+  .alert-message {
+    display: block;
+    margin-bottom: 0.15rem;
+    font-weight: $font-weight-bold;
+    // color: #000;
+    font-size: $font-size-lg;
+  }
+  .alert-description {
+    display: block;
+    font-size: $font-size-sm;
+    line-height: $line-height-base;
+  }
 }

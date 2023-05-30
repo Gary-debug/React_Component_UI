@@ -16,7 +16,7 @@ import classNames from "classnames";
 interface BaseButtonProps {
   className ?: string;
   disabled ?: boolean;
-  size ?: 'lager' | 'small';
+  size ?: 'large' | 'small';
   btnType ?: 'primary' | 'default' | 'danger' | 'link';
   children ?: React.ReactNode
   href ?: string;

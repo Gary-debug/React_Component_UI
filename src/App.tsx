@@ -1,4 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fas } from '@fortawesome/free-solid-svg-icons'
+
 import Button from './components/Button/button';
 import Alert, {BaseAlertProps} from './components/Alert/alert';
 import Menu from './components/Menu/menu';
@@ -6,18 +10,22 @@ import MenuItem from './components/Menu/menuItem';
 import SubMenu from './components/Menu/subMenu';
 import Tabs from './components/Tabs/tabs';
 import TabItem from './components/Tabs/tabItem';
+import Icon from './components/Icon/icon';
+import Transition from './components/Transition/transition';
+library.add(fas)
 
 function App() {
+  const [ show, setShow ] = useState(false)
   return (
     <div className="App">
       <header className="App-header">
         {/* <Button>Hello</Button>
         <Button disabled>Disabled Button</Button>
-        <Button btnType='primary' size='lager'>Large Primay</Button>
+        <Button btnType='primary' size='large'>Large Primay</Button>
         <Button btnType='danger' size='small'>Small Danger</Button>
         <Button btnType='link' href='http://baidu.com'>Baidu Link</Button>
         <Button btnType='link' href='http://baidu.com' disabled target="_blank">Disabled Link</Button> */}
-        {/* <Menu defaultIndex='0' onSelect={(index) => {alert(index)}} mode='horizontal' defaultOpenSubMenus={['2']}>
+        <Menu defaultIndex='0' onSelect={(index) => {alert(index)}} mode='horizontal' defaultOpenSubMenus={['2']}>
           <MenuItem>
             cool link
           </MenuItem>
@@ -35,7 +43,8 @@ function App() {
           <MenuItem>
             cool link3
           </MenuItem>
-        </Menu> */}
+        </Menu>
+
         {/* <Alert title='this is a danger!' type='danger' afterClose={function afterClose(){}}></Alert>
         <Alert title='this is a default!' type='default'>Alert</Alert>
         <Alert title='this is a success!' type='success'>Alert</Alert>
@@ -62,6 +71,7 @@ function App() {
         >
           Learn React
         </a>
+       
       </header>
     </div>
   );
