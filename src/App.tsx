@@ -45,10 +45,10 @@ function App() {
           </MenuItem>
         </Menu>
 
-        {/* <Alert title='this is a danger!' type='danger' afterClose={function afterClose(){}}></Alert>
+        <Alert title='this is a danger!' type='danger' afterClose={function afterClose(){}}></Alert>
         <Alert title='this is a default!' type='default'>Alert</Alert>
         <Alert title='this is a success!' type='success'>Alert</Alert>
-        <Alert title='this is a warning!' type='warning'>Alert</Alert> */}
+        <Alert title='this is a warning!' type='warning'>Alert</Alert>
         <Tabs defaultIndex={'0'} type='card'>
           <TabItem label="选项卡一">
             this is content one
