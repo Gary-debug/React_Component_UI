@@ -7,13 +7,13 @@ import { ComponentMeta, ComponentStory } from '@storybook/react'
 import "../../styles/index.scss";
 
 // 设置标签
-const alertMeta: ComponentMeta<typeof Menu> = {
+const menuMeta: ComponentMeta<typeof Menu> = {
   title: 'Menu',
   component: Menu
 }
 
 // 必须是默认导出
-export default alertMeta;
+export default menuMeta;
 // 传入 args 可以在 story 中调整样式
 const Template: ComponentStory<typeof Menu> = (args) => (
   <Menu {...args}>

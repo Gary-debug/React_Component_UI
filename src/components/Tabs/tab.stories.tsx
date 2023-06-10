@@ -6,13 +6,13 @@ import { ComponentMeta, ComponentStory } from '@storybook/react'
 import "../../styles/index.scss";
 
 // 设置标签
-const alertMeta: ComponentMeta<typeof Tabs> = {
+const tabsMeta: ComponentMeta<typeof Tabs> = {
   title: 'Tabs',
   component: Tabs
 }
 
 // 必须是默认导出
-export default alertMeta;
+export default tabsMeta;
 // 传入 args 可以在 story 中调整样式
 const Template: ComponentStory<typeof Tabs> = (args) => (
   <Tabs {...args}>
