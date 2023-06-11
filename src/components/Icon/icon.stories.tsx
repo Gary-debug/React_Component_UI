@@ -1,52 +1,87 @@
 import React from "react";
-import Icon from "./icon";
-import { ComponentMeta, ComponentStory } from '@storybook/react'
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { fas } from '@fortawesome/free-solid-svg-icons'
-
+import { Story, Meta } from "@storybook/react";
 import "../../styles/index.scss";
-library.add(fas)
-// 设置标签
-const iconMeta: ComponentMeta<typeof Icon> = {
-  title: 'Icon',
-  component: Icon
-}
+import Component, { IconProps } from "./icon";
+import { Title, Subtitle, Description, Primary, ArgsTable, Stories, PRIMARY_STORY } from "@storybook/addon-docs";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { fas } from "@fortawesome/free-solid-svg-icons";
+library.add(fas);
 
-// 必须是默认导出
-export default iconMeta;
-// 传入 args 可以在 story 中调整样式
-const Template: ComponentStory<typeof Icon> = (args) => (
-  <Icon {...args}></Icon>
-)
+export const Icon: React.FC<IconProps> = (args: any) => {
+  return <Component icon="anchor" {...args} />;
+};
 
-export const Primary = Template.bind({})
-Primary.args = {
-  icon: 'coffee',
-  theme: 'primary',
-  size: '3x',
-}
-Primary.storyName = 'Primary Coffee Icon';
+export default {
+  title: "Base/Icon",
+  Component: Icon,
+  argTypes: {
+    className: {
+      description: "类名",
+      disable: true,
+    },
+    theme: {
+      description: "icon类型",
+      defaultValue: "primary",
+      control: {
+        type: "select",
+        options: ["primary", "secondary", "success", "info", "warning", "danger", "light", "dark"],
+      },
+      table: {
+        category: "Icon",
+        type: { summary: "primary | secondary | success | info | warning | danger | light | dark" },
+        defaultValue: { summary: "primary" },
+      },
+    },
+    icon: {
+      description: "icon图标名称",
+      control: {
+        type: "text",
+      },
+      table: {
+        category: "Icon",
+      },
+      type: {
+        name: "string",
+        required: true
+      },
+    },
+  },
+  parameters: {
+    docs: {
+      page: () => (
+        <>
+          <Title />
+          <Subtitle></Subtitle>
+          <Description>此icon组件基于react-fontawesome, docs：https://fontawesome.com/start</Description>
+          <Primary />
+          <ArgsTable story={PRIMARY_STORY} />
+          <Stories />
+        </>
+      ),
+    },
+  },
+} as Meta;
 
-export const Secondary = Template.bind({})
-Secondary.args = {
-  icon: 'check',
-  theme: 'secondary',
-  size: '3x',
-}
-Secondary.storyName = 'Secondary Check Icon';
+// const Template: Story<IconProps> = (args) => <Icon {...args} />;
 
-export const Success = Template.bind({})
-Success.args = {
-  icon: 'times',
-  theme: 'success',
-  size: '3x',
-}
-Success.storyName = 'Success times Icon';
+export const IconTypes: Story<IconProps> = (args) => (
+  <div style={styles}>
+    <Icon icon="anchor" theme="primary" />
+    <Icon icon="anchor" theme="secondary" />
+    <Icon icon="anchor" theme="success" />
+    <Icon icon="anchor" theme="warning" />
+    <Icon icon="anchor" theme="danger" />
+    <Icon icon="anchor" theme="dark" />
+    <Icon icon="anchor" theme="light" />
+    <Icon icon="anchor" theme="info" />
+  </div>
+);
 
-export const Dark = Template.bind({})
-Dark.args = {
-  icon: 'anchor',
-  theme: 'dark',
-  size: '3x',
-}
-Dark.storyName = 'Dark Anchor Icon';
+// export const template = Template.bind({});
+
+const styles = {
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  gap: "10px",
+};

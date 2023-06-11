@@ -1,59 +1,131 @@
-import React, { useState } from 'react';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
-import Input from './input';
+import React, { useState } from "react";
+import { Story, Meta } from "@storybook/react";
+// import { Meta, ArgsTable} from '@storybook/addon-docs'
+import "../../styles/index.scss";
 
+import Component, { InputProps } from "./input";
+
+export const Input: React.FC<InputProps> = (args: any) => {
+  return <Component placeholder="请输入" {...args} />;
+};
+// More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
-  title: 'Input',
-  id: 'Input',
+  title: "Actions/Input",
   component: Input,
-  decorators: [
-    (Story) => (
-      <div style={{ width: '350px' }}>
-        <Story></Story>
-      </div>
-    )
-  ]
-} as ComponentMeta<typeof Input>
+  // parameters: {
+  //   docs: {
+  //     page: null
+  //   }
+  // },
+  // decorators: [
+  //   (Story) => (
+  //     <div style={{margin: '3em'}}>
+  //       <Story />
+  //     </div>
+  //   )
+  // ],
+  // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
+  argTypes: {
+    // backgroundColor: { control: "color" },
+    className: {
+      description: "类名",
+      disable: true,
+    },
+    size: {
+      description: "输入框尺寸",
+      defaultValue: "ml",
+      control: {
+        type: "select",
+        options: ["ml", "lg", "sm"],
+      },
+      table: {
+        category: "Input",
+        type: { summary: "ml | lg | sm" },
+        defaultValue: { summary: "ml" },
+      },
+    },
+    disabled: {
+      description: "是否禁用",
+      defaultValue: false,
+      control: {
+        type: "boolean",
+      },
+      table: {
+        category: "Input",
+        defaultValue: { summary: "false" },
+      },
+    },
+    prepend: {
+      description: "前缀",
+      control: {
+        type: null,
+      },
+      table: {
+        category: "Input",
+      },
+    },
+    append: {
+      description: "前缀",
+      control: {
+        type: null,
+      },
+      table: {
+        category: "Input",
+      },
+    },
+    icon: {
+      description: "icon图标",
+      control: { type: null },
+      table: {
+        category: "Input",
+        type: { summary: "IconProp" },
+      },
+    },
+  },
+} as Meta;
 
+// More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 
-// export const ControllerInput = () => {
-//   const [value, setValue] = useState()
-//   return <Input value={value} defaultValue='0' onChange={(e) => { setValue(e.target.value) }}></Input>
-// }
+export const InputSizes: Story<InputProps> = (args) => (
+  <div style={styles}>
+    <Input size="large" />
+    <Input size="small" />
+  </div>
+);
 
-const Template: ComponentStory<typeof Input> = (args) => <Input  {...args} />
-export const Default = Template.bind({})
-Default.args = {
-  placeholder: 'Default Input'
-}
-Default.storyName = 'Default Input'
+export const InputEnable: Story<InputProps> = (args) => (
+  <div style={styles}>
+    <Input />
+    <Input disabled />
+  </div>
+);
 
-export const Disabled = Template.bind({})
-Disabled.args = {
-  placeholder: 'Disabled Input',
-  disabled: true
-}
-Disabled.storyName = 'Disabled Input'
+export const InputAppend: Story<InputProps> = (args) => (
+  <div style={styles}>
+    <Input prepend="prepend" />
+    <Input prepend={<b>prepend</b>} />
+    <Input append="append" />
+    <Input append={<small>append</small>} />
+  </div>
+);
 
-export const Icon = Template.bind({})
-Icon.args = {
-  placeholder: 'Input With Icon',
-  icon: 'search'
-}
-Icon.storyName = 'Input With Icon'
+export const InputControled: Story<InputProps> = (args) => {
+  const [inputValue, setInputValue] = useState("");
+  return (
+    <div style={styles}>
+      <Input
+        value={inputValue}
+        onChange={(e) => {
+          setInputValue(e.target.value);
+        }}
+      />
+    </div>
+  );
+};
 
-export const SizeInput = () => (
-  <>
-    <Input defaultValue='Large Size' size='large'></Input>
-    <Input placeholder='Small Size' size='small'></Input>
-  </>
-)
-SizeInput.storyName = 'Different Size Input'
-export const PendInput = () => (
-  <>
-    <Input defaultValue='prepend text' prepend='https://'></Input>
-    <Input defaultValue='google' append='.com'></Input>
-    <Input prepend='https://' append='.com'></Input>
-  </>
-)
-PendInput.storyName = 'Pend Input'
+const styles = {
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  gap: "10px",
+};

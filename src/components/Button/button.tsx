@@ -1,5 +1,7 @@
 import React, { FC, ButtonHTMLAttributes, AnchorHTMLAttributes } from "react";
 import classNames from "classnames";
+import Icon from "../Icon/icon";
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
 
 // export enum ButtonSize {
 //   Large = 'large',
@@ -21,8 +23,10 @@ interface BaseButtonProps {
   size ?: 'large' | 'small';
   /**设置 Button 的类型 */
   btnType ?: 'primary' | 'default' | 'danger' | 'link';
-  children ?: React.ReactNode
+  children ?: React.ReactNode;
   href ?: string;
+  icon ?: React.FunctionComponentElement<IconProp>;
+  loading ?: boolean;
 }
 
 type NativeButtonProps = BaseButtonProps & ButtonHTMLAttributes<HTMLElement>
@@ -37,13 +41,15 @@ export const Button: FC<ButtonProps> = (props) => {
     size,
     children,
     href,
+    icon,
+    loading,
     ...restProps
   } = props
   // btn, btn-lg. btn-primary
   const classes = classNames('btn', className, {
     [`btn-${btnType}`]: btnType,
     [`btn-${size}`]: size,
-    'disabled': (btnType === 'link') && disabled
+    'disabled': (btnType === 'link') && disabled || !!loading,
   })
   if (btnType === 'link' && href) {
     return (
@@ -62,6 +68,7 @@ export const Button: FC<ButtonProps> = (props) => {
         disabled={disabled}
         {...restProps}
       >
+        {loading ? <Icon icon="spinner" spin /> : icon}
         {children}
       </button>
     )
@@ -70,7 +77,8 @@ export const Button: FC<ButtonProps> = (props) => {
 
 Button.defaultProps = {
   disabled: false,
-  btnType: 'default'
+  btnType: 'default',
+  loading: false,
 }
 
 export default Button;

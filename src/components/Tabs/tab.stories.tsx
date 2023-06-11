@@ -1,35 +1,103 @@
 import React from "react";
-import Tabs from "./tabs";
-import TabItem from "./tabItem";
-import { ComponentMeta, ComponentStory } from '@storybook/react'
-
+import { Story, Meta } from "@storybook/react";
 import "../../styles/index.scss";
+import Tabs, { TabsProps } from "./tabs";
+import TabItem from "./tabItem";
+import { Title, Subtitle, Description, Primary, ArgsTable, Stories, PRIMARY_STORY } from "@storybook/addon-docs";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { fas } from "@fortawesome/free-solid-svg-icons";
+library.add(fas);
 
-// 设置标签
-const tabsMeta: ComponentMeta<typeof Tabs> = {
-  title: 'Tabs',
-  component: Tabs
-}
+export default {
+  title: "Nav/Tabs",
+  Component: Tabs,
+  subcomponents: { TabItem },
+  argTypes: {
+    className: {
+      description: "类名",
+      disable: true,
+    },
+    defaultIndex: {
+      description: "默认index",
+      control: {
+        type: "text",
+      },
+      table: {
+        category: "Menu",
+      },
+    },
+    type: {
+      description: "Tabs类型",
+      defaultValue: "line",
+      control: {
+        type: "select",
+        options: ["line", "card"],
+      },
+      table: {
+        category: "Menu",
+        type: { summary: "horizontal | vertical" },
+        defaultValue: { summary: "horizontal" },
+      },
+    },
+    style: {
+      description: "内联样式",
+      control: {
+        type: null,
+      },
+    },
+    onSelect: {
+      description: "选择时触发事件",
+      control: {
+        type: null,
+      },
+      table: {
+        category: "Menu",
+      },
+    },
+  },
+  args: {
+    defaultIndex: "0",
+  },
+  parameters: {
+    docs: {
+      page: () => (
+        <>
+          <Title />
+          <Subtitle></Subtitle>
+          <Description></Description>
+          <Primary />
+          <ArgsTable story={PRIMARY_STORY} />
+          <Stories />
+        </>
+      ),
+    },
+  },
+} as Meta;
 
-// 必须是默认导出
-export default tabsMeta;
-// 传入 args 可以在 story 中调整样式
-const Template: ComponentStory<typeof Tabs> = (args) => (
-  <Tabs {...args}>
-    <TabItem label='label1'>tab1</TabItem>
-    <TabItem label='label2'>tab2</TabItem>
-    <TabItem label='label3'>tab3</TabItem>
+export const BaseTabs: Story<TabsProps> = (args) => (
+  <Tabs
+    defaultIndex="0"
+    onSelect={(index) => {
+      console.log(index);
+    }}
+    {...args}
+  >
+    <TabItem label="label1">tab1</TabItem>
+    <TabItem label="label2">tab2</TabItem>
+    <TabItem label="label3">tab3</TabItem>
   </Tabs>
-)
+);
 
-export const Line = Template.bind({})
-Line.args = {
-  type: 'line',
-}
-Line.storyName = 'Line Tabs';
-
-export const Card = Template.bind({})
-Card.args = {
-  type: 'card',
-}
-Card.storyName = 'Card Tabs';
+export const CardTabs: Story<TabsProps> = (args) => (
+  <Tabs
+    defaultIndex="0"
+    onSelect={(index) => {
+      console.log(index);
+    }}
+    type="card"
+  >
+    <TabItem label="label1">tab1</TabItem>
+    <TabItem label="label2">tab2</TabItem>
+    <TabItem label="label3">tab3</TabItem>
+  </Tabs>
+);

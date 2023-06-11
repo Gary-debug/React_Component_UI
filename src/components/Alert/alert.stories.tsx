@@ -1,45 +1,97 @@
 import React from "react";
-import Alert from "./alert";
-import { ComponentMeta, ComponentStory } from '@storybook/react'
-
+import { Story, Meta } from "@storybook/react";
 import "../../styles/index.scss";
+import Component, { BaseAlertProps } from "./alert";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { fas } from "@fortawesome/free-solid-svg-icons";
+library.add(fas);
 
-// 设置标签
-const alertMeta: ComponentMeta<typeof Alert> = {
-  title: 'Alert',
-  component: Alert
-}
+export const Alert: React.FC<BaseAlertProps> = (args: any) => {
+  return <Component message="title" {...args} />;
+};
 
-// 必须是默认导出
-export default alertMeta;
-// 传入 args 可以在 story 中调整样式
-const Template: ComponentStory<typeof Alert> = (args) => (
-  <Alert {...args}></Alert>
-)
+export default {
+  title: "Feedback/Alert",
+  Component: Alert,
+  argTypes: {
+    className: {
+      description: "类名",
+      disable: true,
+    },
+    message: {
+      description: "标题",
+      control: {
+        type: "text",
+      },
+      table: {
+        category: "Alert",
+      },
+    },
+    type: {
+      description: "Alert类型",
+      defaultValue: "default",
+      control: {
+        type: "select",
+        options: ["default", "success", "danger", "warning"],
+      },
+      table: {
+        category: "Alert",
+        type: { summary: "default | success | danger | warning" },
+        defaultValue: { summary: "default" },
+      },
+    },
+    description: {
+      description: "描述",
+      control: {
+        type: "text",
+      },
+      table: {
+        category: "Alert",
+      },
+    },
+    closable: {
+      description: "是否显示关闭按钮",
+      defaultValue: true,
+      control: {
+        type: "boolean",
+      },
+      table: {
+        category: "Alert",
+        defaultValue: { summary: "false" },
+      },
+    },
+    onClose: {
+      description: "关闭事件",
+      control: {
+        type: null,
+      },
+      table: {
+        category: "Alert",
+      },
+    },
+  },
+} as Meta;
 
-export const Defalut = Template.bind({})
-Defalut.args = {
-  description: 'this is a Defalut alert',
-}
-Defalut.storyName = 'Default Alert';
+const Template: Story<BaseAlertProps> = (args) => <Alert {...args} />;
 
-export const Success = Template.bind({})
-Success.args = {
-  type: 'success',
-  description: 'this is a Success alert',
-}
-Success.storyName = 'Success Alert';
+export const AlertTypes: Story<BaseAlertProps> = (args) => (
+  <div style={{ ...styles, flexDirection: "column" }}>
+    <Alert title="Title" type="default" />
+    <Alert title="Title" type="success" />
+    <Alert title="Title" type="danger" />
+    <Alert title="Title" type="warning" />
+  </div>
+);
 
-export const Danger = Template.bind({})
-Danger.args = {
-  type: 'danger',
-  description: 'this is a Danger alert',
-}
-Danger.storyName = 'Danger Alert';
+export const WithDesc = Template.bind({});
+WithDesc.args = {
+  title: "title",
+  description: "This is a few of description",
+};
 
-export const Warning = Template.bind({})
-Warning.args = {
-  type: 'warning',
-  description: 'this is a Warning alert',
-}
-Warning.storyName = 'Warning Alert';
+const styles = {
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  gap: "10px",
+};
