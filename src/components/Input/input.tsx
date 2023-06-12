@@ -1,4 +1,4 @@
-import React, { FC, ReactElement, InputHTMLAttributes, ChangeEvent } from "react";
+import React, { FC, ReactElement, InputHTMLAttributes, ChangeEvent, forwardRef } from "react";
 import classNames from "classnames";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import Icon from "../Icon/icon";
@@ -13,7 +13,7 @@ export interface InputProps extends Omit<InputHTMLAttributes<HTMLElement>, 'size
   onChange ?: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
-export const Input: FC<InputProps> = (props) => {
+export const Input = forwardRef<HTMLInputElement, InputProps> ((props, ref) => {
   const { disabled, size, icon, prepend, append, style, children, ...restProps } = props;
   const cnames = classNames('input-wrapper', {
     [`input-size-${size}`]: size,
@@ -43,5 +43,5 @@ export const Input: FC<InputProps> = (props) => {
     </div>
   )
 }
-
+)
 export default Input;
