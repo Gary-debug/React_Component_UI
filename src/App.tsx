@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
-
+import axios from 'axios';
 import Button from './components/Button/button';
 import Alert, {BaseAlertProps} from './components/Alert/alert';
 import Menu from './components/Menu/menu';
@@ -15,7 +15,6 @@ import Transition from './components/Transition/transition';
 library.add(fas)
 
 function App() {
-  const [ show, setShow ] = useState(false)
   return (
     <div className="App">
       <header className="App-header">
