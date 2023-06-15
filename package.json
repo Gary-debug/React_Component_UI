@@ -1,7 +1,17 @@
 {
   "name": "garvey_ui",
   "version": "0.1.0",
-  "private": true,
+  "description": "React components library",
+  "author": "garvey_fang",
+  "private": false,
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "license": "MIT",
+  "keywords": [
+    "components",
+    "UI"
+  ],
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.4.0",
     "@fortawesome/free-solid-svg-icons": "^6.4.0",
