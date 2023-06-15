@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
-import axios from 'axios';
+import axios from 'axios'
 import Button from './components/Button/button';
 import Alert, {BaseAlertProps} from './components/Alert/alert';
 import Menu from './components/Menu/menu';
